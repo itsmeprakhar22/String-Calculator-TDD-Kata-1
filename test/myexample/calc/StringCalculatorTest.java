@@ -42,14 +42,8 @@ class StringCalculatorTest {
 		//Test 3: Single digit "4" -- 4
 		resultEmpty = testObj.Add("4");
 		assertTrue((resultEmpty==4));
+						
 		
-		//Test 4: Unlimited numbers -- sum
-		resultEmpty = testObj.Add("1,2,3,4,5,6");
-		assertTrue((resultEmpty==21));
-				
-		//Test 8: Multiple delim. [***]\n1***2***3” == 6
-		resultEmpty = testObj.Add("//[***]\n1***2***3");
-		assertTrue((resultEmpty==6));
 		
 		//Test 8: Multiple delim. [***]\n1***2***3” == 6
 		resultEmpty = testObj.Add("//[*][%]\n1*2%3");
@@ -104,4 +98,11 @@ class StringCalculatorTest {
 		assertTrue((resultEmpty==2));
 	}
 
+	@Test
+	void testMultipleDelimiter() {
+		StringCalculator testObj = new StringCalculator();
+		//Test: Multiple delimiter [***]\n1***2***3” == 6
+		int resultEmpty = testObj.Add("//[***]\n1***2***3");
+		assertTrue((resultEmpty==6));
+	}
 }
