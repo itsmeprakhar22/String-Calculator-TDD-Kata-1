@@ -97,5 +97,11 @@ class StringCalculatorTest {
 		}
 	}
 
+	@Test
+	void shouldIgnoreGreaterThan1000() {
+		StringCalculator testObj = new StringCalculator();
+		int resultEmpty = testObj.Add("2,1002");
+		assertTrue((resultEmpty==2));
+	}
 
 }
