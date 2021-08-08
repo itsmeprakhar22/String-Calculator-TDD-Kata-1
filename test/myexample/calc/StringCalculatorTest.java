@@ -13,7 +13,7 @@ class StringCalculatorTest {
 	@Test
 	@Order(1)
 	void atFirstTestGetMethodCount() {
-		//Test: Throw exception on negative
+		//Test : Throw exception on negative
 		StringCalculator testObj = new StringCalculator();
 		
 		//First call to Add()
@@ -31,7 +31,7 @@ class StringCalculatorTest {
 	@Test
 	void testAddForSimpleCommaDelimiter() {
 		StringCalculator testObj = new StringCalculator();
-		//Test 2: "1,2" -- 3
+		//Test : "1,2" -- 3
 		int resultEmpty = testObj.Add("1,2");
 		assertTrue((resultEmpty==3));
 	}
@@ -39,7 +39,7 @@ class StringCalculatorTest {
 	@Test
 	void testAddForEmptyInput() {
 		StringCalculator testObj = new StringCalculator();
-		//Test 1: Empty string -- 0
+		//Test : Empty string -- 0
 		int resultEmpty = testObj.Add("");
 		assertTrue((resultEmpty==0));
 	}
@@ -67,7 +67,7 @@ class StringCalculatorTest {
 	
 	@Test
 	void shouldSupportDifferentDelimiter() {
-		//Test: Support different delimiters ì//;\n1;2;3î == 6
+		//Test : Support different delimiters ‚Äú//;\n1;2;3‚Äù == 6
 		StringCalculator testObj = new StringCalculator();
 		int resultEmpty = testObj.Add("//;\n1;2;3");
 		assertTrue((resultEmpty==6));
@@ -75,7 +75,7 @@ class StringCalculatorTest {
 	
 	@Test
 	void shouldThrowExceptionOnNegatives() {
-		//Test: Throw exception on negative
+		//Test : Throw exception on negative
 		StringCalculator testObj = new StringCalculator();
 		int resultEmpty = 0;
 		try {
@@ -97,7 +97,7 @@ class StringCalculatorTest {
 	@Test
 	void testLongerDelimiter() {
 		StringCalculator testObj = new StringCalculator();
-		//Test: Multiple delimiter [***]\n1***2***3î == 6
+		//Test : Multiple delimiter [***]\n1***2***3‚Äù == 6
 		int resultEmpty = testObj.Add("//[***]\n1***2***3");
 		assertTrue((resultEmpty==6));
 	}
@@ -105,7 +105,7 @@ class StringCalculatorTest {
 	@Test
 	void testMultipleDelimiter() {
 		StringCalculator testObj = new StringCalculator();
-		//Test 8: Multiple delimiter [***]\n1***2***3î == 6
+		//Test : Multiple delimiter [***]\n1***2***3‚Äù == 6
 		int resultEmpty = testObj.Add("//[*][%]\n1*2%3");
 		assertTrue((resultEmpty==6));
 	}
@@ -113,7 +113,7 @@ class StringCalculatorTest {
 	@Test
 	void testLongerAndMultipleDelimiter() {
 		StringCalculator testObj = new StringCalculator();
-		//Test 9:  handle multiple delimiters with length longer than one char 
+		//Test :  handle multiple delimiters with length longer than one char 
 		int resultEmpty = testObj.Add("//[**][%%]\n4**2%%3");
 		assertTrue((resultEmpty==9));
 	}
