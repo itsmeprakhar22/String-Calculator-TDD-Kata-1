@@ -104,6 +104,7 @@ class StringCalculatorTest {
 		assertTrue((resultEmpty==6));
 	}
 
+	@Test
 	void testLongerAndMultipleDelimiter() {
 		StringCalculator testObj = new StringCalculator();
 		//Test 9:  handle multiple delimiters with length longer than one char 
