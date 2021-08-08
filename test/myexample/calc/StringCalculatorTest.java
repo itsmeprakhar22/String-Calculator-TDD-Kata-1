@@ -2,9 +2,31 @@ package myexample.calc;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StringCalculatorTest {
+
+	@Test
+	@Order(1)
+	void atFirstTestGetMethodCount() {
+		//Test: Throw exception on negative
+		StringCalculator testObj = new StringCalculator();
+		
+		//First call to Add()
+		testObj.Add("1,2");
+		int calledCount = StringCalculator.GetCalledCount();
+
+		assertTrue((calledCount==1));
+		
+		//Second call to Add()
+		testObj.Add("4,5,6");
+		calledCount = StringCalculator.GetCalledCount();
+		assertTrue((calledCount==2));
+	}
 
 	@Test
 	void testAdd() {
@@ -74,4 +96,6 @@ class StringCalculatorTest {
 			assertEquals("negatives not allowed [-2, -3]", e.getMessage());
 		}
 	}
+
+
 }

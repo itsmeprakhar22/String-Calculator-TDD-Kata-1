@@ -11,8 +11,8 @@ public class LaunchMain {
 		// TODO Auto-generated method stub
 		String textEmpty = "";
 		String textTwo = "1,2";
-		checkText(textEmpty);
-		checkText(textTwo);
+//		checkText(textEmpty);
+//		checkText(textTwo);
 		
 	}
 }
