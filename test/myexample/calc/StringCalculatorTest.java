@@ -29,22 +29,28 @@ class StringCalculatorTest {
 	}
 
 	@Test
-	void testAdd() {
+	void testAddForSimpleCommaDelimiter() {
+		StringCalculator testObj = new StringCalculator();
+		//Test 2: "1,2" -- 3
+		int resultEmpty = testObj.Add("1,2");
+		assertTrue((resultEmpty==3));
+	}
+
+	@Test
+	void testAddForEmptyInput() {
 		StringCalculator testObj = new StringCalculator();
 		//Test 1: Empty string -- 0
 		int resultEmpty = testObj.Add("");
 		assertTrue((resultEmpty==0));
-		
-		//Test 2: "1,2" -- 3
-		resultEmpty = testObj.Add("1,2");
-		assertTrue((resultEmpty==3));
-		
-		//Test 3: Single digit "4" -- 4
-		resultEmpty = testObj.Add("4");
-		assertTrue((resultEmpty==4));
-		
 	}
 
+	@Test
+	void testAddForSingleNumber() {
+		StringCalculator testObj = new StringCalculator();
+		int resultEmpty = testObj.Add("4");
+		assertTrue((resultEmpty==4));
+	}
+	
 	@Test
 	void shouldAddUnknownAmountOfNumbers() {
 		StringCalculator testObj = new StringCalculator();
