@@ -25,9 +25,7 @@ class StringCalculatorTest {
 		resultEmpty = testObj.Add("1,2,3,4,5,6");
 		assertTrue((resultEmpty==21));
 		
-		//Test 5: 
-		resultEmpty = testObj.Add("1\n2,3");
-		assertTrue((resultEmpty==6));
+		
 		
 		//Test 6: Support different delimiters “//;\n1;2” == 3  
 		resultEmpty = testObj.Add("//;\n1;2");
@@ -61,5 +59,12 @@ class StringCalculatorTest {
 		StringCalculator testObj = new StringCalculator();
 		int resultEmpty = testObj.Add("1,2,3,4,5");
 		assertTrue((resultEmpty==15));
+	}
+	
+	@Test
+	void shouldHandleNewLine() {
+		StringCalculator testObj = new StringCalculator();
+		int resultEmpty = testObj.Add("4\n2,3");
+		assertTrue((resultEmpty==9));
 	}
 }
