@@ -6,9 +6,11 @@ import java.util.regex.Pattern;
 import java.util.stream.*;
 
 public class StringCalculator {
+	//Stores the count of method call of Add(String)
 	private static int count = 0;
 
 	public int Add(String text) {
+		//Increase method call count
 		count++;
 		
 		//Split the input to tokens
@@ -67,6 +69,7 @@ public class StringCalculator {
 		return list;
 	}
 	
+	//Split string to tokens of numbers
 	private static String[] tokenize(String text) {
 		if(text.isEmpty())
 			return new String[] {"0"};
