@@ -24,13 +24,7 @@ class StringCalculatorTest {
 		//Test 4: Unlimited numbers -- sum
 		resultEmpty = testObj.Add("1,2,3,4,5,6");
 		assertTrue((resultEmpty==21));
-		
-		
-		
-		//Test 6: Support different delimiters “//;\n1;2” == 3  
-		resultEmpty = testObj.Add("//;\n1;2");
-		assertTrue((resultEmpty==3));
-		
+				
 		//Test 7: Throw exception on negative
 		try {
 			resultEmpty = testObj.Add("1,-2,-3");
@@ -66,5 +60,13 @@ class StringCalculatorTest {
 		StringCalculator testObj = new StringCalculator();
 		int resultEmpty = testObj.Add("4\n2,3");
 		assertTrue((resultEmpty==9));
+	}
+	
+	@Test
+	void shouldSupportDifferentDelimiter() {
+		//Test: Support different delimiters “//;\n1;2;3” == 6
+		StringCalculator testObj = new StringCalculator();
+		int resultEmpty = testObj.Add("//;\n1;2;3");
+		assertTrue((resultEmpty==6));
 	}
 }
