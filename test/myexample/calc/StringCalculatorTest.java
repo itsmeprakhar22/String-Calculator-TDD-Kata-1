@@ -42,10 +42,6 @@ class StringCalculatorTest {
 		//Test 3: Single digit "4" -- 4
 		resultEmpty = testObj.Add("4");
 		assertTrue((resultEmpty==4));
-						
-		//Test 9:  handle multiple delimiters with length longer than one char 
-		resultEmpty = testObj.Add("//[**][%%]\n4**2%%3");
-		assertTrue((resultEmpty==9));
 		
 	}
 
@@ -107,4 +103,12 @@ class StringCalculatorTest {
 		int resultEmpty = testObj.Add("//[*][%]\n1*2%3");
 		assertTrue((resultEmpty==6));
 	}
+
+	void testLongerAndMultipleDelimiter() {
+		StringCalculator testObj = new StringCalculator();
+		//Test 9:  handle multiple delimiters with length longer than one char 
+		int resultEmpty = testObj.Add("//[**][%%]\n4**2%%3");
+		assertTrue((resultEmpty==9));
+	}
+	
 }
