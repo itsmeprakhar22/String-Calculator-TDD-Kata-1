@@ -9,18 +9,27 @@ public class StringCalculator {
 
 	public int Add(String text) {
 		int sum=0;
+		//Split the input to tokens
 		String[] numbers = tokenize(text);
-		List<Integer> negativeNumbers = filterNegatives(numbers);
-		if(negativeNumbers.size()>0) {
-			throw new RuntimeException("negatives not allowed " + negativeNumbers);
-		}
+		
+		//Check if negative number will throw an exception “negatives not allowed” - 
+		checkAllPositive(numbers);
+		
 		for(int i=0;i<numbers.length;i++) {
 			int element = Integer.parseInt(numbers[i]);
 			sum = sum + element;
 		}
+		
 		return sum;
 	}
 	
+	private void checkAllPositive(String[] numbers) throws RuntimeException {
+		List<Integer> negativeNumbers = filterNegatives(numbers);
+		if(negativeNumbers.size()>0) {
+			//If there are multiple negatives, show all of them in the exception message 
+			throw new RuntimeException("negatives not allowed " + negativeNumbers);
+		}
+	}
 	private static List<Integer> filterNegatives(String[] numbers) {
 		List<Integer> list = new ArrayList<Integer>();
 		for(String e: numbers) {
