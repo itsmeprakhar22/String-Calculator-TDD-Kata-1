@@ -6,25 +6,50 @@ import java.util.regex.Pattern;
 import java.util.stream.*;
 
 public class StringCalculator {
+	private static int count = 0;
 
 	public int Add(String text) {
-		int sum=0;
+		count++;
 		
 		//Split the input to tokens
-		String[] numbers = tokenize(text);
+		String[] tokens = tokenize(text);
+		
+		//Convert tokens to list of integers
+		List<Integer> numbers = convertStringToList(tokens);
 		
 		//Check if negative number will throw an exception “negatives not allowed” - 
 		checkAllPositiveNumbers(numbers);
 		
-		for(int i=0;i<numbers.length;i++) {
-			int element = Integer.parseInt(numbers[i]);
-			sum = sum + element;
-		}
+		int sum = sumOfList(numbers);
 		
 		return sum;
 	}
 	
-	private void checkAllPositiveNumbers(String[] numbers) throws RuntimeException {
+	public static int GetCalledCount() {
+		return count;
+	}
+	
+	private int sumOfList(List<Integer> numbers) {
+		int sum=0;
+		for(int number: numbers) {
+			if(number<=1000)
+			sum = sum + number;
+		}
+		return sum;
+	}
+
+	//Converts a list of number string to list of integers
+	private List<Integer> convertStringToList(String[] tokens) {
+		List<Integer> convertedList = new ArrayList<Integer>();
+		
+		for(int i=0;i<tokens.length;i++) {
+			int element = Integer.parseInt(tokens[i]);
+			convertedList.add(element);
+		}
+		return convertedList;
+	}
+
+	private void checkAllPositiveNumbers(List<Integer> numbers) throws RuntimeException {
 		List<Integer> negativeNumbers = filterNegatives(numbers);
 		if(negativeNumbers.size()>0) {
 			//If there are multiple negatives, show all of them in the exception message 
@@ -32,10 +57,10 @@ public class StringCalculator {
 		}
 	}
 	
-	private static List<Integer> filterNegatives(String[] numbers) {
+	//Filter negative integers in a list of integers
+	private static List<Integer> filterNegatives(List<Integer> numbers) {
 		List<Integer> list = new ArrayList<Integer>();
-		for(String e: numbers) {
-			int number = Integer.parseInt(e);
+		for(int number: numbers) {
 			if(number<0)
 				list.add(number);
 		}
@@ -45,10 +70,10 @@ public class StringCalculator {
 	private static String[] tokenize(String text) {
 		if(text.isEmpty())
 			return new String[] {"0"};
+		
 		if(text.startsWith("//")) {
 			return splitCustomDelimiter(text);
 		}
-		
 		else {
 			String[] tokens = text.split(",|\n");
 			return tokens;
