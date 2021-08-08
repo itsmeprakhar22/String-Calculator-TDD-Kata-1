@@ -25,15 +25,6 @@ class StringCalculatorTest {
 		resultEmpty = testObj.Add("1,2,3,4,5,6");
 		assertTrue((resultEmpty==21));
 				
-		//Test 7: Throw exception on negative
-		try {
-			resultEmpty = testObj.Add("1,-2,-3");
-			fail("Exception expected");
-		}
-		catch(RuntimeException e) {
-			assertEquals("negatives not allowed [-2, -3]", e.getMessage());
-		}
-		
 		//Test 8: Multiple delim. [***]\n1***2***3” == 6
 		resultEmpty = testObj.Add("//[***]\n1***2***3");
 		assertTrue((resultEmpty==6));
@@ -68,5 +59,19 @@ class StringCalculatorTest {
 		StringCalculator testObj = new StringCalculator();
 		int resultEmpty = testObj.Add("//;\n1;2;3");
 		assertTrue((resultEmpty==6));
+	}
+	
+	@Test
+	void shouldThrowExceptionOnNegatives() {
+		//Test: Throw exception on negative
+		StringCalculator testObj = new StringCalculator();
+		int resultEmpty = 0;
+		try {
+			resultEmpty = testObj.Add("1,-2,-3");
+			fail("Exception expected");
+		}
+		catch(RuntimeException e) {
+			assertEquals("negatives not allowed [-2, -3]", e.getMessage());
+		}
 	}
 }
