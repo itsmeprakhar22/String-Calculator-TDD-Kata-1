@@ -56,4 +56,10 @@ class StringCalculatorTest {
 		
 	}
 
+	@Test
+	void shouldAddUnknownAmountOfNumbers() {
+		StringCalculator testObj = new StringCalculator();
+		int resultEmpty = testObj.Add("1,2,3,4,5");
+		assertTrue((resultEmpty==15));
+	}
 }
